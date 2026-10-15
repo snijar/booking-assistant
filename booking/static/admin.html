@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Администратор — Booking Assistant</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script type="module" src="/static/admin.js"></script>
+</head>
+<body>
+  <header class="topbar wrap"><a class="brand" href="/">Booking<span>Assistant</span></a><nav aria-label="Навигация"><a href="/">Запись</a><a class="active" href="/admin" aria-current="page">Администратор</a><a href="/openapi.json">API</a></nav></header>
+  <main class="wrap">
+    <div class="intro"><h1>Расписание специалиста</h1><p>Записи из веб-интерфейса и Telegram в одной базе.</p></div>
+    <p class="demo-note">Демонстрационные данные · Время Москвы (UTC+3) · До 500 последних записей</p>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section id="login-panel" class="login-panel" aria-labelledby="login-title">
+      <h2 id="login-title">Вход администратора</h2><p class="muted">Случайный ключ создаётся локальной командой запуска. Общего пароля для демо нет.</p>
+      <form id="login-form"><label class="field">Ключ доступа<input type="password" id="access-key" autocomplete="off" required minlength="20" maxlength="256"></label><button type="submit" id="login-button" class="primary">Войти</button></form>
+      <p class="hint">Ключ действует 24 часа. Не публикуйте его и не отправляйте в переписке.</p>
+    </section>
+    <section id="admin-panel" hidden aria-labelledby="schedule-title">
+      <div class="admin-toolbar"><h2 id="schedule-title">Все записи</h2><label class="field compact">Дата<input type="date" id="filter-date"></label><button class="quiet" id="clear-filter" type="button">Все даты</button><button class="quiet" id="refresh" type="button">Обновить</button><button class="text-button" id="logout" type="button">Выйти</button></div>
+      <div class="table-scroll"><table><caption class="sr-only">Записи специалиста</caption><thead><tr><th scope="col">Дата и время, МСК</th><th scope="col">Услуга</th><th scope="col">Стоимость</th><th scope="col">Статус</th><th scope="col">Номер записи</th></tr></thead><tbody id="admin-rows"></tbody></table></div>
+      <p id="empty-admin" class="empty" hidden>На выбранную дату записей нет.</p>
+    </section>
+  </main>
+  <footer class="wrap footer"><span>Booking Assistant · демо-проект</span><span>Доступ проверяется на сервере</span></footer>
+</body>
+</html>
+

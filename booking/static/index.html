@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Booking Assistant — запись клиентов</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script type="module" src="/static/app.js"></script>
+</head>
+<body>
+  <header class="topbar wrap">
+    <a class="brand" href="/">Booking<span>Assistant</span></a>
+    <nav aria-label="Навигация"><a class="active" href="/" aria-current="page">Запись</a><a href="/admin">Администратор</a><a href="/openapi.json">API</a></nav>
+  </header>
+  <main class="wrap">
+    <div class="intro"><h1>Запись на удобное время</h1><p>Один специалист. Час на встречу. Выберите услугу и свободный слот.</p></div>
+    <p class="demo-note">Демонстрационное приложение · Все цены условные · Время Москвы (UTC+3)</p>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <div class="workspace">
+      <form id="booking-form" class="booking-form">
+        <fieldset><legend><span class="step">01</span> Услуга</legend><div id="services" class="services" aria-busy="true"><p class="muted">Загружаем услуги…</p></div></fieldset>
+        <fieldset><legend><span class="step">02</span> Дата и время</legend>
+          <div class="date-row"><label class="field">Дата встречи<input id="booking-date" type="date" required></label><button type="button" class="quiet" id="tomorrow">Завтра</button></div>
+          <p class="hint">Ежедневно, 10:00–18:00 · Все встречи по 60 минут</p>
+          <div id="slots" class="slots" aria-label="Доступное время" aria-busy="true"><p class="muted">Загружаем время…</p></div>
+        </fieldset>
+        <div class="confirmation"><p id="selection">Выберите услугу и время.</p><button id="book-button" type="submit" class="primary" disabled>Подтвердить запись</button></div>
+        <p class="hint">Подтверждение появится здесь. Демо не отправляет SMS, письма или сообщения.</p>
+      </form>
+      <aside class="my-bookings" aria-labelledby="my-title">
+        <div class="section-line"><h2 id="my-title">Мои записи</h2><button type="button" class="text-button" id="refresh">Обновить</button></div>
+        <p class="hint">Записи этой сессии браузера. Другие посетители их не видят.</p>
+        <div id="bookings" aria-busy="true"><p class="muted">Загружаем записи…</p></div>
+      </aside>
+    </div>
+  </main>
+  <footer class="wrap footer"><span>Booking Assistant · демо-проект</span><span>FastAPI · SQLite · Telegram-адаптер</span></footer>
+  <dialog id="move-dialog" aria-labelledby="move-title">
+    <form id="move-form"><div class="section-line"><h2 id="move-title">Перенести запись</h2><button type="button" id="close-move" class="quiet" aria-label="Закрыть перенос">Закрыть</button></div>
+      <p class="hint">Старая запись сохранится, если новое время успеют занять.</p>
+      <label class="field">Новая дата<input id="move-date" type="date" required></label>
+      <div id="move-slots" class="slots"></div>
+      <p id="move-error" class="inline-error" role="alert" hidden></p>
+      <button type="submit" class="primary" id="move-button" disabled>Сохранить перенос</button>
+    </form>
+  </dialog>
+</body>
+</html>
+
