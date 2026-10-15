@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "checks": [
+    "page_identity_and_empty_state",
+    "responsive_390_768_1440",
+    "create_and_moscow_time_from_new_york_browser",
+    "separate_sessions_and_foreign_id_404",
+    "reschedule_preserves_id_and_releases_old_slot",
+    "real_conflict_between_two_browser_sessions",
+    "admin_authentication_filter_and_responsive_table",
+    "cancel_and_release_slot",
+    "graceful_stop_restart_and_session_persistence",
+    "admin_logout_revokes_cookie",
+    "rendered_error_and_recovery_with_simulated_503",
+    "keyboard_focus",
+    "no_javascript_errors"
+  ],
+  "javascript_errors": [],
+  "viewports": [
+    390,
+    768,
+    1440
+  ],
+  "screenshots": "/tmp/booking-evidence",
+  "database": "isolated real SQLite",
+  "external_telegram": "not_run"
+}
