@@ -1,0 +1,42 @@
+[project]
+name = "booking-assistant"
+version = "0.1.0"
+description = "Демонстрационная система записи: FastAPI, SQLite и Telegram-адаптер"
+requires-python = ">=3.12,<3.15"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.34,<1",
+  "httpx>=0.28,<1",
+  "tzdata>=2025.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<10",
+    "ruff>=0.11,<1",
+    "mypy>=1.15,<2",
+    "pip-audit>=2.9,<3",
+    "httpx2>=2.13.1",
+]
+browser = ["playwright>=1.51,<2"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = ["browser: requires Chromium and a running application"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["booking"]
+
